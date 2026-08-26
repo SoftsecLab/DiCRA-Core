@@ -1,0 +1,10 @@
+{
+  "models": {
+    "bert-base-uncased": "/home/share/models/bert-base-uncased",
+    "bert-base-cased": "/home/share/models/bert-base-cased",
+    "facebook/bart-base": "/home/share/models/bart-base",
+    "bart-base": "/home/share/models/bart-base",
+    "sentence-transformers/paraphrase-MiniLM-L6-v2": "/home/share/models/paraphrase-MiniLM-L6-v2",
+    "paraphrase-MiniLM-L6-v2": "/home/share/models/paraphrase-MiniLM-L6-v2"
+  }
+}

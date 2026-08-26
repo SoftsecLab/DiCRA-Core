@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite the accompanying DiCRA paper. Author
+  metadata and the final venue citation will be added after anonymous review.
+title: >-
+  DiCRA: Diagnosis-Driven Representation Consolidation and Classifier Alignment
+  for Parameter-Efficient Continual Text Classification
+type: software
+authors:
+  - name: DiCRA Authors
+repository-code: https://github.com/loveyou-3001/DiCRA-Core
+license: MIT
+keywords:
+  - continual learning
+  - parameter-efficient fine-tuning
+  - LoRA
+  - text classification

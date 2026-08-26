@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "artifact_name": "bert-base-uncased",
+  "absolute_path_recorded": false,
+  "file_count": 6,
+  "total_bytes": 438896236,
+  "artifact_manifest_sha256": "fe802d9064ffee42c9776eb7ef260511b88c6472ec94ffd7fc442485c888d49d",
+  "recorded_revisions": [],
+  "revision_status": "unavailable",
+  "config_metadata": {
+    "model_type": "bert",
+    "architectures": [
+      "BertModel"
+    ],
+    "hidden_size": 768
+  },
+  "tokenizer_metadata": {
+    "tokenizer_class": "BertTokenizer",
+    "do_lower_case": true,
+    "model_max_length": 512
+  },
+  "files": [
+    {
+      "path": "config.json",
+      "bytes": 658,
+      "sha256": "af4ca72f5e62e1481fef64bd7a24d5d756bacae6912d64666f082158f57b94fa"
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 437951328,
+      "sha256": "8e47716a979def3ee4331621abb95a2a07619cf6428ca798c051201cbbc0ff89"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 711396,
+      "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 1221,
+      "sha256": "1f92c93d2e31974acffab86d48e80a9357acb18c68346c5472ef1d12c72d5d77"
+    },
+    {
+      "path": "vocab.txt",
+      "bytes": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  ]
+}
