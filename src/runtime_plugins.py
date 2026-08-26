@@ -1,6 +1,3 @@
-"""Registry for optional runtime diagnostics and artifact writers."""
-
-
 OPTIONAL_RUNTIME_PLUGINS = {
     "train_accuracy": "evaluate_train_accuracy",
     "stage_analysis": "analyze_stages",
@@ -14,7 +11,7 @@ OPTIONAL_RUNTIME_PLUGINS = {
 
 
 def enabled_runtime_plugins(args):
-    """Return stable plugin IDs enabled by an argparse-like namespace."""
+
 
     return [
         plugin_id

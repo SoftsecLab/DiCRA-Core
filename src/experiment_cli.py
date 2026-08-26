@@ -1,5 +1,3 @@
-"""Command-line parsing and boundary validation for DiCRA experiments."""
-
 from __future__ import annotations
 
 import argparse
@@ -405,7 +403,7 @@ def parse_args(argv=None):
 
 
 def validate_and_normalize_args(args):
-    """Validate cross-option contracts and apply intentional CLI normalization."""
+
     if args.no_rem:
         if args.alignment_method not in {"gaussian", "none"}:
             raise ValueError(

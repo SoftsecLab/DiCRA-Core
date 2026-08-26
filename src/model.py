@@ -34,7 +34,7 @@ class CosineLinear(nn.Module):
 
 
 class ClassifierLabelMixin:
-    """Map dataset-global labels to classifier rows and grow the head safely."""
+
 
     def initialize_classifier_labels(self, class_ids=None):
         out_features = int(self.classifier.weight.shape[0])
@@ -195,7 +195,7 @@ class RECAPBertClassifier(ClassifierLabelMixin, nn.Module):
         self.initialize_classifier_labels(class_ids)
 
     def get_features(self, input_ids, attention_mask):
-        """Extract CLS token features before dropout/classification."""
+
         outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask)
         if isinstance(outputs, dict):
             return outputs["last_hidden_state"][:, 0, :]

@@ -1,5 +1,3 @@
-"""SLoRA-Pre adapted reimplementation for text class-incremental learning."""
-
 from __future__ import annotations
 
 import argparse

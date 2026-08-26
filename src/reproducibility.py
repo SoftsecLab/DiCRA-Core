@@ -1,5 +1,3 @@
-"""Utilities that keep diagnostics from changing later training randomness."""
-
 import random
 from contextlib import contextmanager
 
@@ -9,7 +7,7 @@ import torch
 
 @contextmanager
 def preserve_rng_state():
-    """Restore Python, NumPy, CPU Torch, and CUDA RNG states on exit."""
+
 
     python_state = random.getstate()
     numpy_state = np.random.get_state()

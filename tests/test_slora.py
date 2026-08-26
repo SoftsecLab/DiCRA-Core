@@ -6,7 +6,7 @@ from pathlib import Path
 try:
     import torch
     import torch.nn as nn
-except ModuleNotFoundError:  # pragma: no cover - lightweight audit environments
+except ModuleNotFoundError:
     torch = None
     nn = None
 

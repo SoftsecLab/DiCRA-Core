@@ -1,5 +1,3 @@
-"""Task-stream orchestration for continual RECAP experiments."""
-
 from __future__ import annotations
 
 import json
@@ -21,7 +19,7 @@ from src.task_stream import TaskStream
 
 
 def save_incremental_checkpoint(model, task_ckpt_dir: str) -> None:
-    """Save only the incremental encoder state, classifier, and class mapping."""
+
 
     os.makedirs(task_ckpt_dir, exist_ok=True)
 
@@ -56,7 +54,7 @@ def save_incremental_checkpoint(model, task_ckpt_dir: str) -> None:
 
 
 class ContinualExperimentRunner:
-    """Coordinate task loading, Wake/Sleep stages, evaluation, and diagnostics."""
+
 
     def __init__(
         self,

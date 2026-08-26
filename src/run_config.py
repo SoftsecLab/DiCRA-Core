@@ -1,10 +1,3 @@
-"""Typed runtime configuration boundaries.
-
-Command-line parsing belongs to the entry point.  Core algorithm modules
-consume these immutable configuration objects instead of depending on an
-``argparse.Namespace`` or stringly-typed dictionaries.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -25,7 +18,7 @@ REM_SCHEDULES = frozenset({"fixed_floor", "coverage_clipped"})
 
 @dataclass(frozen=True)
 class AlignmentConfig:
-    """Configuration required by stabilization and classifier alignment."""
+
 
     alpha: float = 0.5
     target_norm: float = 11.5
@@ -72,7 +65,7 @@ DEFAULT_ALIGNMENT_CONFIG = AlignmentConfig()
 
 @dataclass(frozen=True)
 class WakeConfig:
-    """Configuration required only by Wake-phase optimization."""
+
 
     epochs: int = 10
     lr: float = 3e-4
@@ -120,7 +113,7 @@ class WakeConfig:
 
 @dataclass(frozen=True)
 class ConsolidationConfig:
-    """Configuration required by LoRA-to-backbone consolidation."""
+
 
     merge_gamma: float = 1.0
     merge_gamma_min: float = 0.0
@@ -142,7 +135,7 @@ class ConsolidationConfig:
 
 @dataclass(frozen=True)
 class ExperimentConfig:
-    """Configuration consumed by the continual experiment task runner."""
+
 
     seed: int
     data_root: str

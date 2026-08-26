@@ -1,5 +1,3 @@
-"""Single source of truth for DiCRA's canonical training configuration."""
-
 from src.run_config import (
     AlignmentConfig,
     ConsolidationConfig,
@@ -13,8 +11,8 @@ PROJECT_NAME = "DiCRA"
 CANONICAL_PRESET_NAME = "recap_coverage_clipped_v1"
 
 
-# Dataset-specific paths, task counts, class counts, and LLRD factors are added
-# by experiment launchers. All shared method defaults must live here.
+
+
 RECAP_CANONICAL_CONFIG = {
     "lr": 3e-4,
     "epochs": 10,
@@ -40,12 +38,12 @@ RECAP_CANONICAL_CONFIG = {
 
 
 def canonical_default(name):
-    """Return a canonical default while failing loudly on misspelled keys."""
+
     return RECAP_CANONICAL_CONFIG[name]
 
 
 def canonical_overrides(config):
-    """Return shared canonical fields changed by an explicit experiment config."""
+
     return {
         key: config[key]
         for key, expected in RECAP_CANONICAL_CONFIG.items()
@@ -54,7 +52,7 @@ def canonical_overrides(config):
 
 
 def build_sleep_config(args, task_id) -> AlignmentConfig:
-    """Build the one canonical Sleep/Alignment runtime configuration."""
+
 
     return AlignmentConfig(
         alpha=args.alpha,
@@ -121,7 +119,7 @@ def build_sleep_config(args, task_id) -> AlignmentConfig:
 
 
 def build_wake_config(args) -> WakeConfig:
-    """Build the immutable configuration consumed by Wake training."""
+
 
     return WakeConfig(
         epochs=int(args.epochs),
@@ -146,7 +144,7 @@ def build_wake_config(args) -> WakeConfig:
 
 
 def build_consolidation_config(args) -> ConsolidationConfig:
-    """Build the immutable LoRA consolidation configuration."""
+
 
     return ConsolidationConfig(
         merge_gamma=float(getattr(args, "merge_gamma", 1.0)),
@@ -160,7 +158,7 @@ def build_consolidation_config(args) -> ConsolidationConfig:
 
 
 def build_experiment_config(args) -> ExperimentConfig:
-    """Translate the CLI namespace into the task runner's immutable contract."""
+
 
     return ExperimentConfig(
         seed=int(args.seed),

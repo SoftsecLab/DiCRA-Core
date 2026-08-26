@@ -1,5 +1,3 @@
-"""Evaluation boundary for one continual-learning task stage."""
-
 from __future__ import annotations
 
 import os
@@ -19,7 +17,7 @@ from src.sleep import temporary_imprinted_classifier
 
 @dataclass(frozen=True)
 class TaskEvaluationResult:
-    """Accuracy vectors produced by one post-training evaluation stage."""
+
 
     test_accs: list[float]
     ncm_accs: list[float]
@@ -27,7 +25,7 @@ class TaskEvaluationResult:
 
 
 class TaskEvaluationService:
-    """Evaluate learned tasks without owning the training lifecycle."""
+
 
     def __init__(
         self,

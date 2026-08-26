@@ -1,5 +1,3 @@
-"""Task-level Sleep orchestration around the core Sleep algorithm."""
-
 from __future__ import annotations
 
 from dataclasses import replace
@@ -10,7 +8,7 @@ from src.sleep import merge_and_reinit_lora, sleep_phase
 
 
 class SleepCoordinator:
-    """Run the configured Sleep path and return the active model."""
+
 
     def __init__(
         self,

@@ -1,5 +1,3 @@
-"""Sequential LoRA with RECAP's matched classifier Alignment only."""
-
 from __future__ import annotations
 
 import argparse

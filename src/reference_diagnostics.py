@@ -11,7 +11,7 @@ from src.evaluation import bwt_from_matrix, triangular_avg
 
 
 def extract_features(model, loader, device):
-    """Extract frozen encoder features for post-hoc diagnostics."""
+
     model.eval()
     features, labels = [], []
     with torch.no_grad():
@@ -52,7 +52,7 @@ def fit_linear_probe(
     weight_decay=1e-4,
     batch_size=512,
 ):
-    """Train a temporary linear classifier on frozen features."""
+
     probe = nn.Linear(features.size(1), num_classes).to(device)
     optimizer = torch.optim.AdamW(probe.parameters(), lr=lr, weight_decay=weight_decay)
     criterion = nn.CrossEntropyLoss()
@@ -98,7 +98,7 @@ def fit_classifier_refit(
     weight_decay=1e-4,
     batch_size=512,
 ):
-    """Train a fresh classifier head on frozen features for oracle refit."""
+
     classifier = _make_fresh_classifier_like(model, features.size(1), num_classes).to(device)
     optimizer = torch.optim.AdamW(classifier.parameters(), lr=lr, weight_decay=weight_decay)
     criterion = nn.CrossEntropyLoss()
@@ -162,12 +162,12 @@ def run_frozen_linear_probe(
     make_loader,
     device,
 ):
-    """
-    Train a diagnostic-only linear probe on frozen current features.
 
-    This uses dataset train/test files only for offline validation. It does not
-    update RECAP, prototype memory, model selection, or saved checkpoints.
-    """
+
+
+
+
+
     train_features, train_labels, test_features_by_task, test_labels_by_task = (
         _collect_diagnostic_features(task_id, args, task_order, model, make_loader, device)
     )
@@ -260,12 +260,12 @@ def run_classifier_oracle_refit(
     make_loader,
     device,
 ):
-    """
-    Refit a fresh classifier on frozen final features for diagnostic validation.
 
-    This is a post-hoc oracle: it uses diagnostic train files and never updates
-    RECAP state, prototype memory, or the model used for reported accuracy.
-    """
+
+
+
+
+
     train_features, train_labels, test_features_by_task, test_labels_by_task = (
         _collect_diagnostic_features(task_id, args, task_order, model, make_loader, device)
     )

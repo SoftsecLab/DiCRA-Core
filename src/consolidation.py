@@ -1,5 +1,3 @@
-"""LoRA-to-backbone consolidation services."""
-
 from __future__ import annotations
 
 import math
@@ -14,7 +12,7 @@ def resolve_merge_decay(
     config: ConsolidationConfig,
     task_id: int,
 ):
-    """Return raw and realized merge decay for one task boundary."""
+
 
     raw_decay = config.merge_gamma ** int(task_id)
     if config.merge_decay_mode == "affine_floor":
@@ -31,7 +29,7 @@ def consolidate_lora(
     config: ConsolidationConfig,
     task_id=0,
 ):
-    """Merge LoRA deltas into base weights and reinitialize adapters."""
+
 
     if not isinstance(config, ConsolidationConfig):
         raise TypeError("config must be a ConsolidationConfig")

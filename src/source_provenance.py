@@ -1,5 +1,3 @@
-"""Hash the executable source tree recorded with every experiment."""
-
 from __future__ import annotations
 
 import hashlib
@@ -16,7 +14,7 @@ def _sha256_file(path: Path) -> str:
 
 
 def source_provenance_snapshot(repo_root: str | Path) -> dict:
-    """Return a deterministic hash manifest for code used by ``main.py``."""
+
 
     repo_root = Path(repo_root).resolve()
     paths = [repo_root / "main.py", *sorted((repo_root / "src").rglob("*.py"))]

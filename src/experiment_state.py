@@ -1,5 +1,3 @@
-"""Mutable state produced by a continual experiment task stream."""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -10,7 +8,7 @@ import numpy as np
 
 @dataclass
 class ExperimentState:
-    """Matrices and protocol history accumulated across tasks."""
+
 
     test_matrix: np.ndarray
     seen_matrix: np.ndarray

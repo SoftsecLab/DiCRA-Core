@@ -1,4 +1,3 @@
-# Experiment outputs and checkpoints
 outputs/
 output/
 checkpoints/
@@ -6,29 +5,24 @@ checkpoints/
 *.safetensors
 *.bin
 
-# Datasets and caches
 /data/
 .cache/
 
-# Local model path config
 configs/model_paths.json
 .env
 .env.*
 !.env.example
 
-# Temporary/audit workspaces
 tmp/
 tmp_*
 .audit_*
 .pdfenv/
 _root_archive/
 
-# Reproducibility bundles are published as release/supplementary artifacts
 evidence*/
 release-assets/
 *.tar.gz
 
-# Paper build artifacts and generated packages
 *.aux
 *.bbl
 *.blg
@@ -42,14 +36,12 @@ paper_acl_official_only/main_layout.txt
 paper_acl_official_only/page*.txt
 paper_acl_official_only/tail.txt
 
-# Python caches
 __pycache__/
 *.pyc
 .pytest_cache/
 .coverage
 htmlcov/
 
-# System/editor files
 .DS_Store
 .ipynb_checkpoints/
 .vscode/

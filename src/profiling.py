@@ -294,7 +294,7 @@ def print_param_profile_summary(output_dir):
 
 
 def print_resource_summary(output_dir, time_profiler=None):
-    """Print optional runtime/resource summaries for interactive inspection."""
+
     if time_profiler is not None:
         time_profiler.print_summary(output_dir)
     print_param_profile_summary(output_dir)
@@ -332,7 +332,7 @@ def load_time_profile(run_dir):
 
 
 def summarize_runs(run_items):
-    """Aggregate per-run time_profile summaries into mean/std over seeds."""
+
     metrics = [
         "avg_wake_sec",
         "avg_consolidation_sec",

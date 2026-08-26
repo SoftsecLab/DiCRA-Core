@@ -140,17 +140,17 @@ def _try_modelscope(model_id):
 
 
 def resolve_model_path(model_id):
-    """
-    Resolve a model id to a local path when possible.
 
-    Server migration knobs:
-    - Set DICRA_MODEL_ROOT=/home/share/models when models live in one shared dir.
-    - Or create configs/model_paths.json with {"bert-base-uncased": "/path/..."}.
-    - Passing an explicit local path still has highest priority.
 
-    The legacy RECAP_MODEL_ROOT and RECAP_MODEL_CONFIG names remain accepted so
-    released experiment commands continue to run unchanged.
-    """
+
+
+
+
+
+
+
+
+
     model_id = str(model_id)
 
     explicit = Path(model_id).expanduser()

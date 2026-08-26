@@ -21,7 +21,7 @@ def evaluate_learned_tasks(
     pred_future_count_matrix=None,
     eval_sample_count_matrix=None,
 ):
-    """Evaluate learned tasks in global, observed-class, and NCM spaces."""
+
     seen_count = len(seen_labels) if seen_labels is not None else 0
     print(
         f"Evaluating learned tasks (0 -> {task_id}); "
@@ -138,7 +138,7 @@ def summarize_evaluation_masking(
     pred_future_count_matrix=None,
     eval_sample_count_matrix=None,
 ):
-    """Summarize inference-only seen masking without changing model state."""
+
 
     global_arr = np.asarray(global_matrix, dtype=float)
     seen_arr = np.asarray(seen_matrix, dtype=float)
@@ -344,7 +344,7 @@ def summarize_final_results(
         "avg_inc": avg_inc,
         "avg_inc_seen": avg_inc_seen,
         "avg_inc_ncm": avg_inc_ncm,
-        # Keep `bwt` as a backward-compatible alias for the primary global metric.
+
         "bwt": bwt_global,
         "bwt_global": bwt_global,
         "bwt_seen": bwt_seen,

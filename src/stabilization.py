@@ -1,5 +1,3 @@
-"""NREM-style parameter stabilization and its audit trail."""
-
 from __future__ import annotations
 
 import json
@@ -142,7 +140,7 @@ def stabilize_model(
     output_dir=None,
     audit=None,
 ):
-    """Apply the existing NREM compression rule to trainable parameters."""
+
 
     if audit is None and config.audit_stabilization:
         audit = init_stabilization_audit(

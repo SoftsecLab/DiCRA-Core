@@ -1,5 +1,3 @@
-"""Task-data preparation boundary for continual experiments."""
-
 from __future__ import annotations
 
 import os
@@ -12,7 +10,7 @@ from src.run_config import ExperimentConfig
 
 @dataclass(frozen=True)
 class PreparedTask:
-    """Immutable task metadata loaded before protocol-specific model updates."""
+
 
     task_id: int
     task_dir: int
@@ -23,14 +21,14 @@ class PreparedTask:
 
 @dataclass(frozen=True)
 class TaskLoaders:
-    """Loaders created after protocol-specific model updates."""
+
 
     train_loader: Any
     prototype_loader: Any
 
 
 class TaskStream:
-    """Load task data and construct loaders without mutating experiment state."""
+
 
     def __init__(
         self,

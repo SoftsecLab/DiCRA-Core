@@ -11,7 +11,7 @@ from src.reproducibility import preserve_rng_state
 
 
 class StageDiagnostics:
-    """Stage-level diagnostics for RECAP and REM alignment analysis."""
+
 
     stage_display = {
         "post_wake": "post-wake / pre-merge",
@@ -99,7 +99,7 @@ class StageDiagnostics:
         return labels
 
     def old_sample_classifier_diagnostics(self, task_id):
-        """Measure classifier alignment and routing on historical examples."""
+
         empty = {
             "old_sample_seen_acc": None,
             "align_pos_old": None,
@@ -247,7 +247,7 @@ class StageDiagnostics:
             "seen_avg": summary["avg_seen"],
             "ncm": summary["avg_ncm"],
             "old_ncm": summary["old_task_ncm_avg"],
-            # Diagnostic `bwt` remains an alias for the decomposed seen-space BWT.
+
             "bwt": summary["bwt_seen"],
             "bwt_global": summary["bwt_global"],
             "bwt_seen": summary["bwt_seen"],
@@ -378,7 +378,7 @@ class StageDiagnostics:
 
     @preserve_rng_state()
     def record_stage(self, stage_name, task_id):
-        """Collect stage metrics without perturbing later training randomness."""
+
 
         test_accs, ncm_accs, train_accs = self.evaluate_learned_tasks(
             task_id,

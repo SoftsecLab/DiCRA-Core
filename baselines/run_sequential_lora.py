@@ -1,19 +1,3 @@
-"""
-Sequential LoRA baseline for class-incremental text classification.
-
-This is the plain PEFT continual-learning baseline:
-- BERT encoder with LoRA adapters.
-- Sequentially train on each task.
-- No Sleep stage, no NREM, no REM, no LoRA merge/re-initialization.
-- No replay or prototype-based repair.
-- No layer-wise learning-rate decay by default.
-- Linear classifier by default, to avoid using RECAP's CosineLinear design.
-
-The script intentionally reuses main.py's training/evaluation path with a fixed
-baseline configuration, so results are directly comparable to RECAP under
-the same JSONL task protocol.
-"""
-
 import argparse
 import json
 import os

@@ -1,12 +1,3 @@
-"""Controlled LoRA regularization for Hugging Face PEFT LoRA parameters.
-
-This implements the regularization term from Lu et al. (ACL 2025):
-https://aclanthology.org/2025.acl-long.940/
-
-The tensor mapping follows the authors' PEFT wrapper:
-https://github.com/sutakori/CLoRA/blob/main/clora.py
-"""
-
 from __future__ import annotations
 
 import hashlib
@@ -61,7 +52,7 @@ def _lora_parameter_groups(model: nn.Module):
 
 
 class CLoRARegularizer(nn.Module):
-    """Fixed random subspaces and the official CLoRA regularization loss."""
+
 
     OFFICIAL_REPOSITORY = "https://github.com/sutakori/CLoRA"
     OFFICIAL_SOURCE_COMMIT = "802cda88cd21e839326701ba5c2ba48cbd317be0"
@@ -97,7 +88,7 @@ class CLoRARegularizer(nn.Module):
             )
         self.target_modules = tuple(target_modules)
 
-        # Isolate regularizer initialization from model/data-loader RNG streams.
+
         parameter_devices = {
             group["a"][1].device for group in groups.values()
         } | {
@@ -171,7 +162,7 @@ class CLoRARegularizer(nn.Module):
         for record in self._records:
             p_input = getattr(self, record.p_input_name)
             p_output = getattr(self, record.p_output_name)
-            # PEFT A is [rank, input], PEFT B is [output, rank].
+
             a_projection = record.lora_a @ p_input
             b_projection = record.lora_b.transpose(0, 1) @ p_output
             layer_loss = 0.5 * (

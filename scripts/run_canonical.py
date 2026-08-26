@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""Run or summarize the frozen DiCRA fixed-global comparison."""
-
 from __future__ import annotations
 
 import argparse
@@ -233,7 +231,7 @@ def report(methods, datasets, seeds):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Run the canonical DiCRA comparison.")
     parser.add_argument("--methods", nargs="+", choices=METHODS, default=list(METHODS))
     parser.add_argument("--datasets", nargs="+", choices=tuple(DATASETS), default=list(DATASETS))
     parser.add_argument("--seeds", nargs="+", type=int, default=list(SEEDS))

@@ -5,7 +5,7 @@ from src.wake_training import WakeTrainer
 
 
 class RECAPTrainer:
-    """Compatibility facade coordinating Wake, Sleep and evaluation."""
+
 
     def __init__(self, model, device, args):
         self.model = model
@@ -23,7 +23,7 @@ class RECAPTrainer:
         )
 
     def bind_model(self, model) -> None:
-        """Keep all phase services attached to one model instance."""
+
 
         self.model = model
         self.wake_trainer.bind_model(model)
@@ -87,7 +87,7 @@ class RECAPTrainer:
 
         print("[Sleep] consolidate current task")
 
-        # Phase 0: merge LoRA updates into the shared backbone.
+
         if getattr(self.args, "no_consolidation", False):
             print("[Consolidation] skipped by --no_consolidation")
         else:
@@ -110,7 +110,7 @@ class RECAPTrainer:
 
     @staticmethod
     def _predict_from_logits(logits, candidate_labels=None, classifier_class_ids=None):
-        """Return global predictions or predictions restricted to candidate labels."""
+
         return RECAPEvaluator.predict_from_logits(
             logits,
             candidate_labels=candidate_labels,
@@ -125,21 +125,21 @@ class RECAPTrainer:
         return self._bound_evaluator().evaluate(loader)
 
     def evaluate_global_and_seen(self, loader, seen_labels):
-        """Evaluate full-output and observed-class predictions in one forward pass."""
+
         return self._bound_evaluator().evaluate_global_and_seen(
             loader,
             seen_labels,
         )
 
     def evaluate_global_seen_and_future(self, loader, seen_labels):
-        """Also count global predictions assigned to unobserved classes."""
+
         return self._bound_evaluator().evaluate_global_seen_and_future(
             loader,
             seen_labels,
         )
 
     def evaluate_ncm(self, loader, prototype_memory):
-        """Evaluate feature quality with nearest-centroid classification."""
+
         return self._bound_evaluator().evaluate_ncm(
             loader,
             prototype_memory,
@@ -151,7 +151,7 @@ class RECAPTrainer:
         prototype_memory,
         seen_labels,
     ):
-        """Compare cosine-head and single-mean NCM predictions sample by sample."""
+
         return self._bound_evaluator().evaluate_classifier_ncm_agreement(
             loader,
             prototype_memory,

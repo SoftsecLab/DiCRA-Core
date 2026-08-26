@@ -1,11 +1,3 @@
-"""Dependency-free metric primitives for continual-learning result matrices.
-
-All metric values are represented as fractions in the inclusive range used by
-the caller (normally ``[0, 1]``), never as percentages.  This module is not
-wired into the training or reporting paths yet; it provides a single,
-behavior-locked implementation for a later migration.
-"""
-
 from __future__ import annotations
 
 import math
@@ -40,12 +32,12 @@ def validate_matrix(
     matrix: Sequence[Sequence[float]],
     num_tasks: int,
 ) -> tuple[tuple[float, ...], ...]:
-    """Validate and normalize the leading ``num_tasks`` square matrix.
 
-    Exactly ``num_tasks`` rows are required.  Rows may contain trailing
-    columns for compatibility with existing result files, but only their first
-    ``num_tasks`` values are validated and returned.
-    """
+
+
+
+
+
 
     _validate_num_tasks(num_tasks)
     if not _is_sequence(matrix) or len(matrix) != num_tasks:
@@ -98,7 +90,7 @@ def _backward_transfer(
 
 
 def final_average(matrix: Sequence[Sequence[float]], num_tasks: int) -> float:
-    """Return the equally weighted task accuracy at the final stage."""
+
 
     validated = validate_matrix(matrix, num_tasks)
     return _final_average(validated, num_tasks)
@@ -108,14 +100,14 @@ def average_incremental_accuracy(
     matrix: Sequence[Sequence[float]],
     num_tasks: int,
 ) -> float:
-    """Average each stage over seen tasks, then average over all stages."""
+
 
     validated = validate_matrix(matrix, num_tasks)
     return _average_incremental_accuracy(validated, num_tasks)
 
 
 def backward_transfer(matrix: Sequence[Sequence[float]], num_tasks: int) -> float:
-    """Return final-stage forgetting relative to each old task's diagonal."""
+
 
     validated = validate_matrix(matrix, num_tasks)
     return _backward_transfer(validated, num_tasks)
@@ -125,7 +117,7 @@ def summarize_matrix(
     matrix: Sequence[Sequence[float]],
     num_tasks: int,
 ) -> MetricSummary:
-    """Compute the canonical Final Avg, Avg Inc, and BWT metrics once."""
+
 
     validated = validate_matrix(matrix, num_tasks)
     return {
@@ -136,7 +128,7 @@ def summarize_matrix(
 
 
 def aggregate_seeds(values: Sequence[float]) -> dict[str, object]:
-    """Return seed values with their mean and sample standard deviation."""
+
 
     if not _is_sequence(values):
         raise TypeError("values must be a sequence")

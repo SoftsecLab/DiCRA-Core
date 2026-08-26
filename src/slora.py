@@ -1,5 +1,3 @@
-"""SLoRA-Pre task-boundary denoising for PEFT LoRA modules."""
-
 from __future__ import annotations
 
 import hashlib
@@ -18,7 +16,7 @@ DEFAULT_CANDIDATE_RATIOS = tuple(index / 10 for index in range(1, 11))
 
 
 def resolve_candidate_ranks(rank: int, ratios=DEFAULT_CANDIDATE_RATIOS):
-    """Map the official ratio grid to unique ranks in ascending order."""
+
 
     if isinstance(rank, bool) or not isinstance(rank, int) or rank <= 0:
         raise ValueError("rank must be a positive integer")
@@ -46,7 +44,7 @@ def _local_generator(device, seed):
 
 
 def randomized_rank_approximation(update, candidate_rank, *, seed):
-    """Apply the randomized-SVD pipeline used by the official SLoRA code."""
+
 
     if update.ndim != 2:
         raise ValueError("LoRA update must be a matrix")
@@ -79,7 +77,7 @@ def randomized_rank_approximation(update, candidate_rank, *, seed):
 
 
 def fixed_rank_subspace_similarity(update, reference_basis, rank):
-    """Reproduce the official fixed-rank Grassmannian scoring step."""
+
 
     update_u, _, _ = torch.linalg.svd(update, full_matrices=False)
     update_basis = update_u[:, :rank]
@@ -101,7 +99,7 @@ def denoise_lora_update(
     task_id,
     module_name,
 ):
-    """Select and return the highest-similarity SLoRA approximation."""
+
 
     scores = []
     best_score = -math.inf
@@ -158,7 +156,7 @@ class ReferenceSubspace:
 
 
 class SLoRAPreConsolidator:
-    """Denoise and merge each task update using the frozen initial model."""
+
 
     def __init__(
         self,

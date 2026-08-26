@@ -22,7 +22,7 @@ from src.stabilization import (
 
 
 def merge_and_reinit_lora(model, args, task_id=0):
-    """Compatibility facade for the typed consolidation service."""
+
 
     config = (
         args
@@ -47,7 +47,7 @@ def sleep_phase(
     alignment_callback=None,
     output_dir=None,
 ):
-    """RECAP core: stabilization followed by the selected alignment method."""
+
     alignment_method = effective_alignment_method(config)
     print(f"[Sleep] Stabilization + Alignment ({alignment_method})")
 

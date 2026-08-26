@@ -51,7 +51,7 @@ def setup_seed(seed, deterministic=True):
 
 
 def parse_args(argv=None):
-    """Compatibility entrypoint for callers that import ``main.parse_args``."""
+
     return parse_experiment_args(argv)
 
 

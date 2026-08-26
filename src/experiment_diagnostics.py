@@ -1,5 +1,3 @@
-"""Diagnostic service coordination for continual experiments."""
-
 from __future__ import annotations
 
 from typing import Any, Callable
@@ -17,7 +15,7 @@ from src.run_config import ExperimentConfig
 
 
 class ExperimentDiagnosticsCoordinator:
-    """Own optional diagnostics while preserving their existing artifacts."""
+
 
     def __init__(
         self,

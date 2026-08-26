@@ -1,5 +1,3 @@
-"""Classifier protocol activation for continual experiment stages."""
-
 from __future__ import annotations
 
 from src.experiment_state import ExperimentState
@@ -7,7 +5,7 @@ from src.run_config import ExperimentConfig
 
 
 class ClassifierProtocolCoordinator:
-    """Apply classifier protocol rules and record their stage snapshots."""
+
 
     def __init__(
         self,

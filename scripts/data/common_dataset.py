@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""Shared helpers for preparing JSONL class-incremental datasets."""
-
 from __future__ import annotations
 
 import json
@@ -11,7 +9,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 
 def task_sort_key(path: Path) -> int:
-    """Sort task directories named like task_0, task_1, ... numerically."""
+
     return int(path.name.rsplit("_", 1)[-1])
 
 

@@ -1,14 +1,3 @@
-"""Controlled LoRA baseline adapted to text class-incremental learning.
-
-Reference:
-Lu et al. (ACL 2025), "Controlled Low-Rank Adaptation with Subspace
-Regularization for Continued Training on Large Language Models".
-
-This is explicitly an adapted reimplementation: the official language-model
-loss is replaced by the repository's class-incremental classification loss
-while the official PEFT LoRA regularization term is preserved.
-"""
-
 from __future__ import annotations
 
 import argparse

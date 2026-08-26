@@ -1,33 +1,3 @@
-"""
-Official-ish O-LoRA baseline for class-incremental text classification.
-
-Reference:
-Wang et al. (2023), "Orthogonal Subspace Learning for Language Model
-Continual Learning" (O-LoRA), official repo: cmnfriend/O-LoRA.
-
-Why this file exists:
-- The official implementation is built around T5/LLaMA instruction-style
-  generation. This repository studies sentence-level class-incremental
-  classification with BERT-style encoders.
-- We therefore keep the official O-LoRA parameter semantics while adapting the
-  input/output interface to this repo's single-head text classification setup.
-
-Official O-LoRA semantics preserved here:
-1. Old LoRA subspace is frozen and accumulated across tasks.
-2. Each new task trains a separate "new" LoRA subspace.
-3. Orthogonal loss constrains new LoRA_A against frozen old LoRA_A.
-4. At task end, new LoRA is concatenated into the frozen old LoRA subspace,
-   then the new LoRA branch is re-initialized for the next task.
-
-Text-CIL adaptation:
-- The backbone is a frozen BERT encoder with O-LoRA injected into target linear
-  modules.
-- Evaluation is seen-so-far by default, matching class-incremental protocol.
-- Classifier rows for old classes can be protected by a gradient mask. This is
-  not part of the original generative O-LoRA, but avoids direct classifier-row
-  destruction in a discriminative single-head adaptation.
-"""
-
 import argparse
 import gc
 import json
@@ -68,7 +38,7 @@ def task_path(data_root, task_id, split):
 
 
 class OfficialishOLoRALinear(nn.Module):
-    """Linear layer with frozen old LoRA plus trainable new LoRA branch."""
+
 
     def __init__(self, base_linear, rank=16, alpha=None, dropout=0.1):
         super().__init__()

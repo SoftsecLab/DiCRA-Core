@@ -1,5 +1,3 @@
-"""Model prediction and feature-space evaluation services."""
-
 from __future__ import annotations
 
 from typing import Callable
@@ -10,7 +8,7 @@ from sklearn.metrics import accuracy_score
 
 
 class RECAPEvaluator:
-    """Evaluate classifier and prototype predictions without training concerns."""
+
 
     def __init__(self, model, device, autocast_context: Callable):
         self.model = model
@@ -18,12 +16,12 @@ class RECAPEvaluator:
         self._autocast_context = autocast_context
 
     def bind_model(self, model) -> None:
-        """Update the evaluated model after a pipeline replaces its reference."""
+
 
         self.model = model
 
     def inference_context(self):
-        """Return the precision context used for model inference."""
+
 
         return self._autocast_context()
 
@@ -33,7 +31,7 @@ class RECAPEvaluator:
         candidate_labels=None,
         classifier_class_ids=None,
     ):
-        """Return global predictions or predictions restricted to candidates."""
+
 
         if classifier_class_ids is None:
             classifier_class_ids = list(range(logits.shape[1]))
@@ -105,13 +103,13 @@ class RECAPEvaluator:
         return accuracy_score(gts, preds)
 
     def evaluate_global_and_seen(self, loader, seen_labels):
-        """Evaluate full-output and observed-class predictions together."""
+
 
         report = self.evaluate_global_seen_and_future(loader, seen_labels)
         return report["global_accuracy"], report["seen_accuracy"]
 
     def evaluate_global_seen_and_future(self, loader, seen_labels):
-        """Evaluate both spaces and count predictions assigned to future rows."""
+
 
         self.model.eval()
         global_preds, seen_preds, gts = [], [], []
@@ -157,7 +155,7 @@ class RECAPEvaluator:
         }
 
     def evaluate_ncm(self, loader, prototype_memory):
-        """Evaluate feature quality with nearest-centroid classification."""
+
 
         self.model.eval()
         if not prototype_memory.prototypes:
@@ -222,7 +220,7 @@ class RECAPEvaluator:
         prototype_memory,
         seen_labels,
     ):
-        """Compare cosine-head and single-mean NCM predictions per sample."""
+
 
         self.model.eval()
         labels = sorted(int(label) for label in seen_labels)

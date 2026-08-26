@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""Aggregate evaluation-only seen-class masking controls across seeds."""
-
 from __future__ import annotations
 
 import argparse
@@ -268,7 +266,7 @@ def collect(args):
 
 
 def audit_inputs(args):
-    """Print artifact coverage without attempting metric aggregation."""
+
 
     failures = 0
     print("\nEvaluation Masking Artifact Audit")
@@ -462,7 +460,7 @@ def write_global_outputs(rows, json_path: Path, tsv_path: Path):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Report evaluation masking results.")
     for argument, method in METHOD_GROUPS:
         parser.add_argument(
             f"--{argument.replace('_', '-')}",

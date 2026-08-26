@@ -1,19 +1,4 @@
 #!/usr/bin/env python3
-"""
-Prepare FewRel with the ACL 2024 / "Learn or Recall?" task8 protocol.
-
-Target protocol:
-- 80 relations
-- 8 tasks
-- 10 relations per task
-- 33,600 training instances: 420 per relation
-- 11,200 test instances: 140 per relation
-
-The most faithful source is FewRel-2021.pkl from the official VAG/CL codebase.
-That file already stores train/dev/test splits as 420/140/140 samples per class
-and uses the default class order consumed by their fewrel_task8 config.
-"""
-
 import argparse
 import pickle
 import random

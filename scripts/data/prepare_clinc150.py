@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""Prepare CLINC150 as a class-incremental JSONL dataset."""
-
 from __future__ import annotations
 
 import argparse

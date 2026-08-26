@@ -1,5 +1,3 @@
-"""Post-hoc diagnostics for measuring stale prototype error."""
-
 from __future__ import annotations
 
 import json
@@ -27,7 +25,7 @@ def validate_diagnostic_splits(
     refresh_data_root=None,
     refresh_protocol="heldout_dev",
 ):
-    """Require a non-overlapping held-out split for every diagnostic task."""
+
     root = Path(data_root)
     refresh_root = Path(refresh_data_root) if refresh_data_root else root
     validated = []
@@ -100,7 +98,7 @@ def _ncm_accuracy(features, targets, centers, labels):
 
 
 def prototype_cosine_drift(stored_memory, refreshed_memory, labels, device):
-    """Return a class-balanced mean of 1-cosine for corresponding K=1 centers."""
+
     if not labels:
         return None
     stored = _memory_centers(stored_memory, labels, device)
@@ -109,7 +107,7 @@ def prototype_cosine_drift(stored_memory, refreshed_memory, labels, device):
 
 
 def validate_stored_ncm_reproduction(diagnostic, main, sample_counts):
-    """Allow at most one boundary prediction to differ across forward passes."""
+
     diagnostic = np.asarray(diagnostic, dtype=float)
     main = np.asarray(main, dtype=float)
     sample_counts = np.asarray(sample_counts, dtype=int)
@@ -145,7 +143,7 @@ def validate_stored_ncm_reproduction(diagnostic, main, sample_counts):
 
 
 class PrototypeStalenessDiagnostics:
-    """Compare stored and refreshed NCM using identical checkpoint features."""
+
 
     def __init__(
         self,

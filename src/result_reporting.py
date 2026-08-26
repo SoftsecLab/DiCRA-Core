@@ -1,5 +1,3 @@
-"""Final result assembly, audit persistence, and console reporting."""
-
 from __future__ import annotations
 
 import json
@@ -14,7 +12,7 @@ from src.evaluation import (
 
 @dataclass(frozen=True)
 class ResultOptions:
-    """Runtime choices that affect final result semantics and artifacts."""
+
 
     num_tasks: int
     num_classes: int
@@ -52,7 +50,7 @@ class ResultOptions:
 
 
 def assemble_results(run_state, task_order, options: ResultOptions):
-    """Build the stable results.json payload from completed run state."""
+
 
     results = summarize_final_results(
         test_matrix=run_state.test_matrix,
@@ -225,7 +223,7 @@ def assemble_results(run_state, task_order, options: ResultOptions):
 
 
 def build_clora_report(trainer):
-    """Return the final CLoRA audit payload, if CLoRA is active."""
+
 
     if trainer.clora_regularizer is None:
         return None
@@ -248,7 +246,7 @@ def write_json_artifact(output_dir, filename, payload) -> None:
 
 
 def write_initial_clora_audit(output_dir, trainer) -> None:
-    """Persist the pre-training fixed-subspace audit when CLoRA is active."""
+
 
     if trainer.clora_regularizer is None:
         return
@@ -406,7 +404,7 @@ def finalize_experiment(
     make_loader,
     device,
 ):
-    """Persist all final artifacts and return the results payload."""
+
 
     if options.num_tasks <= 0:
         return None

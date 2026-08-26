@@ -1,5 +1,3 @@
-"""Prototype-based classifier alignment services."""
-
 from __future__ import annotations
 
 import copy
@@ -41,7 +39,7 @@ def effective_alignment_method(config: AlignmentConfig) -> str:
 
 
 def resolve_rem_budget(num_classes, config: AlignmentConfig):
-    """Resolve how many REM prototype batches to replay."""
+
 
     num_classes = max(0, int(num_classes))
     rem_cycles_per_class = int(config.rem_cycles_per_class)
@@ -168,7 +166,7 @@ def imprint_classifier_from_prototypes(
     *,
     normalize_weights=False,
 ):
-    """Overwrite every stored class row with its class prototype mean."""
+
 
     classifier = model.classifier
     if not hasattr(classifier, "weight"):
@@ -208,7 +206,7 @@ def imprint_classifier_from_prototypes(
 
 @contextmanager
 def temporary_imprinted_classifier(model, prototype_memory):
-    """Temporarily evaluate with an imprinted copy of the persistent head."""
+
 
     persistent_classifier = model.classifier
     persistent_state = {
@@ -294,7 +292,7 @@ def align_classifier(
     output_dir=None,
     callback=None,
 ):
-    """Run the selected post-stabilization classifier alignment."""
+
 
     alignment_method = effective_alignment_method(config)
     num_classes = (

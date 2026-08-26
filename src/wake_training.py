@@ -1,5 +1,3 @@
-"""Wake-phase optimization services for continual RECAP training."""
-
 from __future__ import annotations
 
 import copy
@@ -18,7 +16,7 @@ from src.run_config import WakeConfig
 
 
 def build_grad_scaler(device, precision: str):
-    """Create a GradScaler without warning on new or breaking old PyTorch."""
+
 
     enabled = device.type == "cuda" and precision == "fp16"
     amp_namespace = getattr(torch, "amp", None)
@@ -30,7 +28,7 @@ def build_grad_scaler(device, precision: str):
 
 
 def freeze_backbone_layers(model, freeze_layers: int) -> list[nn.Parameter]:
-    """Temporarily freeze embeddings and the first encoder layers."""
+
 
     frozen_params = []
     if freeze_layers <= 0:
@@ -54,7 +52,7 @@ def freeze_backbone_layers(model, freeze_layers: int) -> list[nn.Parameter]:
 def restore_frozen_parameters(
     frozen_params: Iterable[nn.Parameter],
 ) -> None:
-    """Restore only parameters temporarily frozen by the Wake phase."""
+
 
     for param in frozen_params:
         param.requires_grad = True
@@ -68,7 +66,7 @@ def build_wake_optimizer(
     weight_decay: float,
     llrd_gamma: float,
 ):
-    """Build AdamW with optional layer-wise learning-rate decay."""
+
 
     if llrd_gamma >= 1.0:
         return torch.optim.AdamW(
@@ -126,7 +124,7 @@ def build_wake_scheduler(
     warmup_ratio: float,
     min_lr_ratio: float,
 ):
-    """Build the per-batch warmup and cosine-decay scheduler."""
+
 
     if warmup_ratio <= 0:
         return None
@@ -152,7 +150,7 @@ def build_wake_scheduler(
 
 
 class WakeTrainer:
-    """Own Wake-phase precision, optimization, replay and regularization."""
+
 
     def __init__(self, model, device, config: WakeConfig):
         if not isinstance(config, WakeConfig):
@@ -200,7 +198,7 @@ class WakeTrainer:
         self.bind_model(model)
 
     def bind_model(self, model) -> None:
-        """Update the Wake target after another phase replaces the model."""
+
 
         self.model = model
         self.trainable_params_cache = [
