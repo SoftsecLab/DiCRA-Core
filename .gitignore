@@ -31,6 +31,7 @@ release-assets/
 *.log
 *.out
 *.pdf
+!figures/*.pdf
 *.zip
 paper_acl_official_only/main_layout.txt
 paper_acl_official_only/page*.txt

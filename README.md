@@ -66,7 +66,7 @@ Expected marker: `SUBMISSION_EVIDENCE_63_RUNS_OK`.
 main.py       DiCRA training entry point
 src/          core method and evaluation implementation
 baselines/    five controlled LoRA baselines
-scripts/      one canonical runner and data preparation
+scripts/      canonical runner, data preparation, and paper figures
 tests/        core unit and protocol tests
 experiments/  frozen selection and artifact manifests
 ```
