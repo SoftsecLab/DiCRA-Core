@@ -50,12 +50,21 @@ Results are written to `outputs/canonical/summary.{json,tsv}`.
 
 ## Verify released evidence
 
-Each supplementary evidence bundle contains its own standard-library-only
-verifier. For the canonical fixed-global bundle:
+Download [`data.zip`](https://github.com/loveyou-3001/DiCRA-Core/releases/download/v0.1.0-evidence/data.zip)
+from the `v0.1.0-evidence` release and verify the outer archive:
 
 ```bash
-python evidence_63_documented_dev_v1_anonymous/scripts/recompute_all_results.py \
-  evidence_63_documented_dev_v1_anonymous
+echo "a04e0490fbc6cc5da7b56b7929133fde7c9951a4597fe3724adfcf19c001b763  data.zip" | sha256sum -c -
+unzip data.zip
+```
+
+Each nested evidence bundle contains its own standard-library-only verifier.
+For the canonical fixed-global bundle:
+
+```bash
+tar -xzf evidence_63_documented_dev_v1.tar.gz
+python evidence_63_documented_dev_v1/scripts/recompute_all_results.py \
+  evidence_63_documented_dev_v1
 ```
 
 Expected marker: `SUBMISSION_EVIDENCE_63_RUNS_OK`.

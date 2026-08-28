@@ -3,13 +3,18 @@
 Real per-run artifacts are distributed as release assets so large, immutable
 evidence files do not enter Git history.
 
-Use the `_anonymous.tar.gz` transport bundles and
-`ANONYMOUS_SHA256SUMS.txt` during double-blind review. These copies replace
-private machine paths in protocol-only files, preserve every real
-`config.json` and `results.json` byte-for-byte, update dependent manifest
-hashes, and pass the original independent bundle verifiers.
+Use sanitized transport bundles during double-blind review. The standalone
+seven-bundle distribution uses `_anonymous.tar.gz` filenames; the five bundles
+inside `data.zip` retain their unsuffixed legacy filenames. Both forms remove
+private machine paths, preserve every real `config.json` and `results.json`,
+and pass the independent bundle verifiers.
 
 ## Release assets
+
+The [`v0.1.0-evidence` release](https://github.com/loveyou-3001/DiCRA-Core/releases/tag/v0.1.0-evidence)
+provides `data.zip`, a verified outer archive containing the first five bundles
+listed below. Its SHA256 is
+`a04e0490fbc6cc5da7b56b7929133fde7c9951a4597fe3724adfcf19c001b763`.
 
 | Asset | Scope |
 |---|---|
@@ -26,7 +31,9 @@ published hashes. The public method name is DiCRA.
 
 ## Verification
 
-Download the required release assets and verify them from the repository root:
+The SHA256 shown above verifies `data.zip`; after extraction, run each bundle's
+independent verifier. `ANONYMOUS_SHA256SUMS.txt` applies only when the seven
+standalone `_anonymous.tar.gz` assets are downloaded together:
 
 ```bash
 sha256sum -c results/ANONYMOUS_SHA256SUMS.txt
